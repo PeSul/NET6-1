@@ -7,17 +7,71 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-
-            string input = "";
-
-            while (input != "x")
             {
-                input = ConvertFtoCandPrint();
+
+                Console.WriteLine("Zadej datum narození ve formatu RRRR.MM.DD");
+                DateTime datum = DateTime.Parse(Console.ReadLine());
+
+                TimeSpan age = DateTime.Now - datum;
+
+                if (age.TotalDays / 365 >= 18)
+                {
+                    Console.WriteLine("adult");
+                }
+                else
+                {
+                    Console.WriteLine("child");
+                }
+                DateTime date = new DateTime(2021, 11, 08, 16, 0, 0);
+
+                DateTime now = DateTime.Now;
+                var twoweeks = date.AddDays(14);
+
+                Console.WriteLine(date.ToShortDateString());
             }
+            
+            string input = "";
+            
+            while(input != "x")
+            {
+                Console.WriteLine("Zadej jméno a příjmení / x pro konec");
+                input = Console.ReadLine();
+
+                Console.WriteLine("Zadej věk / x pro konec");
+                string age = Console.ReadLine();
+
+                if (input == "x")
+                    return;
+
+                string name_trimmed = input.Trim();
+                //string[] items = name_trimmed.Split(" ");
+
+                File.AppendAllText("lide.txt", $"{name_trimmed};{age}{Environment.NewLine}");
+
+            }  
+           
+
+           
+
+            
+
+            //string firstname = items[0];
+            //string lastname = items[1];
+
+            //Console.WriteLine($"Jméno: {firstname} Příjmení: {lastname}");
+
+
+
+            //string input = "";
+
+            //while (input != "x")
+            //{
+            //    input = ConvertFtoCandPrint();
+            //}
 
    
         }
-    
+
 
         /// <summary>
         /// metoda konverze teploty
@@ -30,11 +84,13 @@ namespace HelloWorld
 
             if (usr_input == "x")
                 return usr_input;
+            try
+            {
+                double f = double.Parse(usr_input);
+                double c = ConvertFtoC(f);
 
-            double f = double.Parse(usr_input);
-            double c = ConvertFtoC(f);
-                        
-            Console.WriteLine($"{f} °F je + {c} °C");
+                Console.WriteLine($"{f} °F je + {c} °C");
+            }
 
             catch (FormatException ex)
             {
