@@ -6,7 +6,11 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Jak se jmenuješ");
+                        
+            string name = Console.ReadLine();
+            string pozdrav = "Ahoj " + name;
+            Console.WriteLine(pozdrav);
         }
     }
 }
