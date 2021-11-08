@@ -32,7 +32,15 @@ namespace HelloWorld
             //}
 
         }
+        static double ConvertFtoC(double tempF)
+        {
+            return (tempF - 32) * 1.8;
+        }
 
+        static double ConvertCtoF(double tempC)
+        {
+            return (tempC / 1.8) - 32;
+        }
         static void Hello(string name)
         {
             int x = 5;
