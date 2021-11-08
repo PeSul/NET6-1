@@ -6,23 +6,31 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Jak se jmenuješ");
+            Console.WriteLine("Zadej celé číslo");
 
-            string name = Console.ReadLine();
+            int x = int.Parse(Console.ReadLine());
 
-            string name5p = "name";
-            if (name == "Petr")
-            {
-                name5p = "Petře ";
-            }
-            else if (name == "Karel")
-            {
-                name5p = "Karle ";
-            }
-            else
-            {
-                name5p = name5p + ", pardon Tvé jméno neumín skolňovat";
-            }
+            Console.WriteLine("Výsledek:" + Calc(x));
+
+
+            //Console.WriteLine("Jak se jmenuješ");
+
+            //string name = Console.ReadLine();
+
+            //string name5p = "name";
+            //if (name == "Petr")
+            //{
+            //    name5p = "Petře ";
+            //}
+            //else if (name == "Karel")
+            //{
+            //    name5p = "Karle ";
+            //}
+            //else
+            //{
+            //    name5p = name5p + ", pardon Tvé jméno neumín skolňovat";
+            //}
+
         }
 
         static void Hello(string name)
