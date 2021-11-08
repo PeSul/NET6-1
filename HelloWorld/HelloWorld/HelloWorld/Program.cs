@@ -6,11 +6,17 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Zadej celé číslo");
+            Console.WriteLine("Zadej teplotu ve stupních Farenheita");
 
-            int x = int.Parse(Console.ReadLine());
+            double x = double.Parse(Console.ReadLine());
 
-            Console.WriteLine("Výsledek:" + Calc(x));
+            Console.WriteLine("Teplota ve stuppních C:" + ConvertFtoC(x));
+
+            //Console.WriteLine("Zadej celé číslo");
+
+            //int x = int.Parse(Console.ReadLine());
+
+            //Console.WriteLine("Výsledek:" + Calc(x));
 
 
             //Console.WriteLine("Jak se jmenuješ");
