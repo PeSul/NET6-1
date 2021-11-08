@@ -6,38 +6,42 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Zadej teplotu ve stupních Farenheita");
 
-            double x = double.Parse(Console.ReadLine());
+            string input = "";
 
-            Console.WriteLine("Teplota ve stuppních C:" + ConvertFtoC(x));
+            while (input != "x")
+            {
+                input = ConvertFtoCandPrint();
+            }
 
-            //Console.WriteLine("Zadej celé číslo");
-
-            //int x = int.Parse(Console.ReadLine());
-
-            //Console.WriteLine("Výsledek:" + Calc(x));
-
-
-            //Console.WriteLine("Jak se jmenuješ");
-
-            //string name = Console.ReadLine();
-
-            //string name5p = "name";
-            //if (name == "Petr")
-            //{
-            //    name5p = "Petře ";
-            //}
-            //else if (name == "Karel")
-            //{
-            //    name5p = "Karle ";
-            //}
-            //else
-            //{
-            //    name5p = name5p + ", pardon Tvé jméno neumín skolňovat";
-            //}
-
+   
         }
+    
+
+        /// <summary>
+        /// metoda konverze teploty
+        /// </summary>
+        static string ConvertFtoCandPrint()
+        {
+            Console.WriteLine("Zadej teplotu ve stupních Farenheita / x pro konec");
+
+            string usr_input = Console.ReadLine();
+
+            if (usr_input == "x")
+                return usr_input;
+
+            //double x = double.Parse(Console.ReadLine());
+
+            double f = double.Parse(usr_input);
+            double c = ConvertFtoC(f);
+
+            //Console.WriteLine("Teplota ve stuppních C:" + $"{c} C");
+
+            Console.WriteLine($"{f} °F je + {c} °C");
+
+            return usr_input;
+        }
+
         static double ConvertFtoC(double tempF)
         {
             return (tempF - 32) * 1.8;
@@ -67,5 +71,32 @@ namespace HelloWorld
             return result;
         }
     }
+    /*private static void NameSklon()
+          {
+              console.writeline("zadej celé číslo");
 
+              int x = int.parse(console.readline());
+
+              console.writeline("výsledek:" + calc(x));
+
+
+              console.writeline("jak se jmenuješ");
+
+              string name = console.readline();
+
+              string name5p = "name";
+              if (name == "petr")
+              {
+                  name5p = "petře ";
+              }
+              else if (name == "karel")
+              {
+                  name5p = "karle ";
+              }
+              else
+              {
+                  name5p = name5p + ", pardon tvé jméno neumín skolňovat";
+              }
+          }
+          */
 }
