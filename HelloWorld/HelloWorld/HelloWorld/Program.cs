@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace HelloWorld
 {
@@ -30,14 +31,20 @@ namespace HelloWorld
             if (usr_input == "x")
                 return usr_input;
 
-            //double x = double.Parse(Console.ReadLine());
-
             double f = double.Parse(usr_input);
             double c = ConvertFtoC(f);
-
-            //Console.WriteLine("Teplota ve stuppních C:" + $"{c} C");
-
+                        
             Console.WriteLine($"{f} °F je + {c} °C");
+
+            catch (FormatException ex)
+            {
+                if (usr_input != "x")
+                    File.AppendAllText("errorlog.txt", ex.Message + Environment.NewLine);
+            }
+            catch (Exception ex)
+            {
+                File.AppendAllText("errorlog.txt", "general exception: " + ex.Message + Environment.NewLine);
+            }
 
             return usr_input;
         }
