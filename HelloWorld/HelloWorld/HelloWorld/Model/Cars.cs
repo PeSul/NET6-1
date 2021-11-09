@@ -8,6 +8,14 @@ namespace HelloWorld.Model
 {
     class Cars
     {
+
+        public Cars(string platenumber, string color, double kilometers)
+        {
+            PlateNumber = platenumber;
+            Color = color;
+            Kilometers = kilometers;
+        }
+
         public string PlateNumber { get; set; }
 
         public string Color { get; set; }

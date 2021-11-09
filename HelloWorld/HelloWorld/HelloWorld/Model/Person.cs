@@ -13,10 +13,11 @@ namespace HelloWorld.Model
             
         }
 
-        public Person(string firtname, string lastname)
+        public Person(string firtname, string lastname, DateTime dob)
         {
             FirstName = firtname;
             LastName = lastname;
+            DateofBirth = dob;
         }
 
         public string FirstName { get; set; }
@@ -28,6 +29,11 @@ namespace HelloWorld.Model
         public int Age()
         {
             return (int)((DateTime.Today - DateofBirth).TotalDays / 365);
+        }
+
+        public override string ToString()
+        {
+            return $"{FirstName} {LastName}";
         }
     }
 }

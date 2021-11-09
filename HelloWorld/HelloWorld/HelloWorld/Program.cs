@@ -22,7 +22,9 @@ namespace HelloWorld
             p2.DateofBirth = new DateTime(1968, 6, 26);
             int age2 = p2.Age();
 
-            Person p = new Person("Josef", "Zelinka");
+            Person p = new Person("Josef", "Zelinka",new DateTime(1972,7,3));
+
+            Console.WriteLine(p);
 
             Person oldest = p1.Age() >= p2.Age() ? p1 : p2;
             Console.WriteLine($"Nejstarší je {oldest.FirstName} {oldest.LastName}");
