@@ -12,7 +12,8 @@ namespace HelloWorld.Data
     {
         // field - staticka polozka
         const string personDataFile = "People.txt";
-        //static string PersonDataFile { get; set; } // property
+        //property
+        //static string PersonDataFile { get; set; }
 
         //metoda pro ulozeni - pripojeni jedne osoby na konec souboru
         public static void SavePerson(Person person)
