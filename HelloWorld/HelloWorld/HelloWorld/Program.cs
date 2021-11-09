@@ -28,6 +28,12 @@ namespace HelloWorld
             Cars Opel = new Cars();
             Opel.Color = "Blue";
             Opel.Kilometers = 2000;
+
+            Invoice inv1 = new Invoice();
+            inv1.Customer = "EON";
+            inv1.InvoiceItem = "Gas 01-05 2022";
+            inv1.Price = 10000;
+            
     }
 
         
