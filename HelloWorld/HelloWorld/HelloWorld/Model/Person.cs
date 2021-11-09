@@ -8,6 +8,17 @@ namespace HelloWorld.Model
 {
     class Person
     {
+        public Person()
+        {
+            
+        }
+
+        public Person(string firtname, string lastname)
+        {
+            FirstName = firtname;
+            LastName = lastname;
+        }
+
         public string FirstName { get; set; }
         
         public string LastName { get; set; }
