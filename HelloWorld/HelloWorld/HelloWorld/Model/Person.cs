@@ -13,9 +13,9 @@ namespace HelloWorld.Model
             
         }
 
-        public Person(string firtname, string lastname, DateTime dob)
+        public Person(string firstname, string lastname, DateTime dob)
         {
-            FirstName = firtname;
+            FirstName = firstname;
             LastName = lastname;
             DateofBirth = dob;
         }

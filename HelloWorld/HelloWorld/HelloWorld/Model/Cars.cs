@@ -9,6 +9,11 @@ namespace HelloWorld.Model
     class Cars
     {
 
+        public Cars()
+        {
+
+        }
+
         public Cars(string platenumber, string color, double kilometers)
         {
             PlateNumber = platenumber;
