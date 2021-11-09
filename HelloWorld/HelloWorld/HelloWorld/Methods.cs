@@ -1,70 +1,56 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
 
 namespace HelloWorld
 {
-    class Methods
+    class MethodsDay1
     {
-        private static void FindOldest()
+        private static void IsAdult()
         {
-            int age_max = 0;
-            string name_oldest = "";
+            // podle data narozeni zjistete
+            // jestli je uzivatel plnolety
 
-            foreach (var line in File.ReadLines("lide.txt"))
+            Console.WriteLine("Zadej datum oddělené tečkami");
+            DateTime datum = DateTime.Parse(Console.ReadLine());
+
+            TimeSpan ts = DateTime.Now - datum;
+
+            if (ts.TotalDays / 365.0 >= 18)
             {
-                string[] items = line.Split(';');
-
-                string name = items[0];
-                string age_s = items[1];
-                int age = int.Parse(age_s);
-
-                if (age > age_max)
-                {
-                    age_max = age;
-                    name_oldest = name;
-                }
+                Console.WriteLine("Jsi dospělý");
             }
-            Console.WriteLine($"Nejstarší člověk je {name_oldest} ({age_max})");
+            else
+            {
+                Console.WriteLine("Nejsi dospělý");
+            }
         }
 
-        static int ageSolver(DateTime dateofbirth)
-        {
-            DateTime today = DateTime.Today;
-
-            return (int)((today - dateofbirth).TotalDays / 365);
-        }
-
-        static int Compare(int x, int y)
-        {
-            return (x > y ? x : y);
-        }
 
         /// <summary>
-        /// metoda konverze teploty
+        /// Convert temperature from F to C and print to console
         /// </summary>
         static string ConvertFtoCandPrint()
         {
-            Console.WriteLine("Zadej teplotu ve stupních Farenheita / x pro konec");
+            // vytvorte metodu ktera prevadi stupne F na C
+            // a prevadejte cisla ze vstupu od uzivatele
 
-            string usr_input = Console.ReadLine();
+            Console.WriteLine("Zadej teplotu ve stupnich F:");
 
-            if (usr_input == "x")
-                return usr_input;
+            string user_input = Console.ReadLine();
+
             try
             {
-                double f = double.Parse(usr_input);
+                double f = double.Parse(user_input);
                 double c = ConvertFtoC(f);
-
-                Console.WriteLine($"{f} °F je + {c} °C");
+                Console.WriteLine($"{f}°F je {c}°C");
             }
-
             catch (FormatException ex)
             {
-                if (usr_input != "x")
+                if (user_input != "x")
                     File.AppendAllText("errorlog.txt", ex.Message + Environment.NewLine);
             }
             catch (Exception ex)
@@ -72,108 +58,59 @@ namespace HelloWorld
                 File.AppendAllText("errorlog.txt", "general exception: " + ex.Message + Environment.NewLine);
             }
 
-            return usr_input;
+            return user_input;
+
         }
 
-
-        /*
-        static int ageSolver(DateTime dateofbirth)
+        public static void Hello(string name)
         {
-            DateTime today = DateTime.Today;
+            string name5p = name;
 
-            return (int)((today - dateofbirth).TotalDays / 365);
+
+
+            if (name == "Lukáš")
+            {
+                name5p = "Lukáši";
+            }
+            else if (name == "Karel")
+            {
+                name5p = "Karle";
+            }
+            else if (name == "Petr")
+            {
+                name5p = "Petře";
+            }
+            else
+            {
+                name5p += ", omlouvám se, ale tvoje jméno neumím skloňovat.";
+            }
+            //string pozdrav;
+
+            string pozdrav = "Ahoj " + name5p;
+
+            Console.WriteLine(pozdrav);
         }
 
-        static int Compare(int x, int y)
+        public static (int, int) Calc(int x)
         {
-            return (x > y ? x : y);
+            // vytvorte metodu ktera vstup vynasoby 2
+            // a pricte  10
+
+            int result = x * 2 + 10;
+
+            return (3, 5);
         }
-        */
+
 
 
         /// <summary>
-        /// metoda konverze teploty
+        /// converts temperature from F to C
         /// </summary>
-        //static string ConvertFtoCandPrint()
-        //{
-        //    Console.WriteLine("Zadej teplotu ve stupních Farenheita / x pro konec");
-
-        //    string usr_input = Console.ReadLine();
-
-        //    if (usr_input == "x")
-        //        return usr_input;
-        //    try
-        //    {
-        //        double f = double.Parse(usr_input);
-        //        double c = ConvertFtoC(f);
-
-        //        Console.WriteLine($"{f} °F je + {c} °C");
-        //    }
-
-        //    catch (FormatException ex)
-        //    {
-        //        if (usr_input != "x")
-        //            File.AppendAllText("errorlog.txt", ex.Message + Environment.NewLine);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        File.AppendAllText("errorlog.txt", "general exception: " + ex.Message + Environment.NewLine);
-        //    }
-
-        //    return usr_input;
-        //}
-
+        /// <param name="tempF">temperature F as double</param>
+        /// <returns>temperature C</returns>
         static double ConvertFtoC(double tempF)
         {
-            return (tempF - 32) * 1.8;
-        }
-
-        static double ConvertCtoF(double tempC)
-        {
-            return (tempC / 1.8) - 32;
-        }
-        static void Hello(string name)
-        {
-            int x = 5;
-            int y = Calc(x);
-
-            Console.WriteLine("Vysledek je:" + y);
-            Console.WriteLine("x:" + x);
-        }
-
-        static int Calc(int x)
-        {
-            //vytvorte metodu ktera pricte vstup vynasobeny 2
-            // a pricte 10
-            int result = x * 2 + 10;
-
-            x = 55;
-            Console.WriteLine("x:" + x);
-            return result;
-        }
-
-    }
-}
-/*UNUSED
-private static void FindOldest()
-{
-    int age_max = 0;
-    string name_oldest = "";
-
-    foreach (var line in File.ReadLines("lide.txt"))
-    {
-        string[] items = line.Split(';');
-
-        string name = items[0];
-        string age_s = items[1];
-        int age = int.Parse(age_s);
-
-        if (age > age_max)
-        {
-            age_max = age;
-            name_oldest = name;
+            return (tempF - 32) / 1.8;
         }
     }
-    Console.WriteLine($"Nejstarší člověk je {name_oldest} ({age_max})");
 }
-*/
