@@ -10,9 +10,14 @@ namespace HelloWorld.Model
     {
         public Person()
         {
-            HomeAddress = new Address(); 
+            HomeAddress = new Address();
         }
-
+        public Person(string firstname, string lastname)
+        {
+            HomeAddress = new Address();
+            FirstName = firstname;
+            LastName = lastname;
+        }
         public Person(string firstname, string lastname, DateTime dob)
         {
             HomeAddress = new Address();
@@ -21,12 +26,15 @@ namespace HelloWorld.Model
             DateofBirth = dob;
         }
 
-        public Address HomeAddress { get; set; } // = new Address(); - vzdy se inicializuje
-
+        
         public string FirstName { get; set; }
         
         public string LastName { get; set; }
-                
+
+        public Address HomeAddress { get; set; } // = new Address(); - vzdy se inicializuje
+
+        public List<Cars> Cars{ get; set; } = new List<Cars>();
+
         public DateTime DateofBirth { get; set; }
 
         public int Age()
