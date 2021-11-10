@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using HelloWorld.Data;
 using HelloWorld.Model;
+using System.Linq;
 
 namespace HelloWorld
 {
@@ -11,76 +12,134 @@ namespace HelloWorld
 
         static void Main(string[] args)
         {
-            //Console.WriteLine(DayofWeek.GetDayNumArray("Středa"));
-            Console.WriteLine(DayofWeek.GetDayNumList("Středa"));
 
-            //Point2D p1 = new Point2D(10, 15);
-            //Point2D p2 = new Point2D(100, 100);
+            var numbers = new[] { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+            var strings = new[] { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 
-            //Console.WriteLine(p1);
-            //Console.WriteLine(p2);
+            //var numTOstring = numbers.Select(n => strings[n]);
+            //var numTOstring = strings.Select(s => s.ToUpper());
+            var numTOstring = strings.Select(s => s.ToLower() + " " + s.ToUpper());
 
+            PrintJoin<string>(numTOstring);
 
-            //List<string> names = new List<string>();
-            //foreach (var p in PersonData.LoadPeople())
+            //foreach (var item in numTOstring)
             //{
-            //    names.Add(p.FirstName + " " + p.LastName);
-
+            //    Console.WriteLine(item);
             //}
 
-            //var joined = string.Join(", ", names);
-            //Console.WriteLine(joined);
+            static void PrintJoin<T>(IEnumerable<T> items)
+            {
+                Console.WriteLine(string.Join(", ", items));
+            }
 
 
-            //var people = PersonData.LoadPeople();
+            //int[] numbers = { -2079, -498, 2920, -1856, 332, -2549, -674, -120, -992, 2782, 320, -524, 135, 952, 1868, 2509, -230, -138, -904, -480 };
 
-            //Console.WriteLine(people.Count);
+            /// z "numebers" zjistěte:
+            /// 1. počet prvků v poli
+            //var count = numbers.Count();
+            //Console.WriteLine(count);
+            /// 2. největší hodnotu
+            //var max = numbers.Max();
+            //Console.WriteLine(max);
+            /// 3. nejmenší hodnotu
+            //var min = numbers.Min();
+            //Console.WriteLine(min);
+            /// 4. průměr
+            //var average = numbers.Average();
+            //Console.WriteLine(average.ToString());
+            /// 5. kolik obsahuje pole kladných čísel
+            //var countpositive = numbers.Where(x => x>= 0).Count();
+            //var countpositive = numbers.Count(x => x >= 0);
+            //Console.WriteLine(countpositive);
+            /// 6. kolik obsahuje pole záporných čísel
+            //var countnegative = numbers.Count(x => x < 0);
+            //Console.WriteLine(countnegative);
+            /// 7. sumu všech hodnot
+            //var sumtotal = numbers.Sum();
+            //Console.WriteLine(sumtotal);
+            /// 8. sumu kladných hodnot
+            //var sumpositive = numbers.Where(x => x > 0).Sum();
+            //Console.WriteLine(sumpositive);
+            /// seřaďte pole od njmenší po největší hodnoty,
+            ///9. přeskočte první 3 prvky a sečtěte zbytek
+            //var result = numbers.OrderBy(x => x).Skip(3).Sum();
+            //Console.WriteLine(result);
+            ///10.Najděte tři největší tři absolotní hodnoty
+            //var maxabs = numbers.OrderByDescending(x => System.Math.Abs(x)).Take(3);
+            //var maxabs = numbers.OrderByDescending(x => System.Math.Abs(x)).Take(3);
+            //Console.WriteLine("maxabs: " + string.Join(", ",maxabs));
+
+            //Select transformace
+
+            //var result = numbers.Select(number => number + 10);
+            //var result = numbers.Select(x => System.Math.Abs(x))
+            //    .OrderByDescending(x => x)
+            //    .Take(3);
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item);
+            //}
 
         }
-        //Person p10 = new Person();
-
-        //p10.FirstName = "Petr";
-        //p10.LastName = "Suldovský";
-        //p10.DateofBirth = new DateTime(1918, 6, 6);
-        //int age1 = p10.Age();
-
-        //Person p20 = new Person();
-
-        //p20.FirstName = "Daniela";
-        //p20.LastName = "Suldovská";
-        //p20.DateofBirth = new DateTime(1968, 6, 26);
-        //int age2 = p20.Age();
-
-        //var p = new Person("Jan", "Hakr",new DateTime(1980,1,3));
-        //p.HomeAddress.City = "Praha";
-        //p.HomeAddress.Street = "Limuzská";
-
-        //var p2 = new Person("Jana", "Nová", new DateTime(1995, 1, 13));
-        //p.HomeAddress.City = "Praha";
-        //p.HomeAddress.Street = "Kubelíkova";
-
-
-        //PersonData.SavePerson(p2);
-
-
-
-        //Console.WriteLine(p);
-        /*
-                    Person oldest = p1.Age() >= p2.Age() ? p1 : p2;
-                    Console.WriteLine($"Nejstarší je {oldest.FirstName} {oldest.LastName}");
-
-                    Cars Opel = new Cars();
-                    Opel.Color = "Blue";
-                    Opel.Kilometers = 2000;
-
-                    Invoice inv1 = new Invoice();
-                    inv1.Customer = "EON";
-                    inv1.InvoiceItem = "Gas 01-05 2022";
-                    inv1.Price = 10000;
-        */
 
     }
 
-        
-    
- }
+
+
+    }
+
+//ARCH
+//int[] numbers = { 1, 2, -30, 4, 20, 256, -45, 99 };
+
+/*
+// where  - filtruje kolekci => "lambda výraz"
+
+//where pomocí složené podmínky
+var result = numbers.Where(number => number > 0 && number < 100);
+
+foreach (var item in result)
+{
+    Console.WriteLine(item);
+}
+
+//where pomocí řetězení
+var result1 = numbers
+    .Where(number => number > 0)
+    .Where(number => number < 100);
+
+foreach (var item in result1)
+{
+    Console.WriteLine(item);
+}
+
+// řazení
+var result2 = numbers.OrderBy(number => number);
+
+foreach (var item in result2)
+{
+    Console.WriteLine(item);
+}
+
+*/
+
+//přeskočení nebo oseknutí
+//take, skip
+//var result3 = numbers.SkipWhile(n => n > 0);
+//var result3 = numbers.TakeWhile(n => n > 0);
+
+
+//foreach (var item in result3)
+//{
+//    Console.WriteLine(item);
+
+//var result4 = numbers.Sum();
+//var result4 = numbers.Max();
+//var result4 = numbers.Average();
+//var result4 = numbers.First();
+//var result4 = numbers.Last();
+
+
+//Console.WriteLine(result4);
+
