@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HelloWorld.Data
 {
-    class PersonData
+    public class PersonData
     {
         // field - staticka polozka
         const string personDataFile = "People.txt";

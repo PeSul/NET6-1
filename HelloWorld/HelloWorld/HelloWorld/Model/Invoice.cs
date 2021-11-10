@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HelloWorld.Model
 {
-    class Invoice
+    public class Invoice
     {
         public string Customer { get; set; }
 
