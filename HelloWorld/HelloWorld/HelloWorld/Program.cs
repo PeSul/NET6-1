@@ -11,16 +11,25 @@ namespace HelloWorld
 
         static void Main(string[] args)
         {
+            //Console.WriteLine(DayofWeek.GetDayNumArray("Středa"));
+            Console.WriteLine(DayofWeek.GetDayNumList("Středa"));
 
-            List<string> names = new List<string>();
-            foreach (var p in PersonData.LoadPeople())
-            {
-                names.Add(p.FirstName + " " + p.LastName);
+            //Point2D p1 = new Point2D(10, 15);
+            //Point2D p2 = new Point2D(100, 100);
 
-            }
+            //Console.WriteLine(p1);
+            //Console.WriteLine(p2);
 
-            var joined = string.Join(", ", names);
-            Console.WriteLine(joined);
+
+            //List<string> names = new List<string>();
+            //foreach (var p in PersonData.LoadPeople())
+            //{
+            //    names.Add(p.FirstName + " " + p.LastName);
+
+            //}
+
+            //var joined = string.Join(", ", names);
+            //Console.WriteLine(joined);
 
 
             //var people = PersonData.LoadPeople();
