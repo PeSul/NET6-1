@@ -33,7 +33,7 @@ namespace WpfApp1
                         
             PersonDetail personDetail = new PersonDetail(p);
         
-            personDetail.Show();
+            personDetail.ShowDialog();
 
             //Test statické naplnění properties
             //Person p = new Person();
