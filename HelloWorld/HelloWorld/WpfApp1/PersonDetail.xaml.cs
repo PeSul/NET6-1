@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApp1.Data;
 
 namespace WpfApp1
 {
@@ -21,10 +22,22 @@ namespace WpfApp1
     public partial class PersonDetail : Window
     {
         Person person;
-        public PersonDetail(Person _person)
+        MainWindow mainWindow;
+        bool isNewPerson = false;
+
+        public PersonDetail(Person _person, MainWindow _mainWindow,bool _isNewPerson)
         {
             InitializeComponent();
+            mainWindow = _mainWindow;
+            isNewPerson = _isNewPerson;
+
+            if(isNewPerson)
+                person = new Person();
+            else
+
             person = _person;
+
+
             txtFirstName.Text = person.FirstName;
             txtLastName.Text = person.LastName;
             txtDateofBirth.Text = person.DateofBirth.ToShortDateString();
@@ -34,6 +47,15 @@ namespace WpfApp1
         {
             person.FirstName = txtFirstName.Text;
             person.LastName = txtLastName.Text;
+
+            if(isNewPerson)
+                DataAccess.AddPerson(person);
+            else
+                DataAccess.SavePerson(person);
+
+            DataAccess.LoadPeopleFromDb();
+            mainWindow.grdPeople.ItemsSource = DataAccess.people;
+            Close();
         }
     }
 }

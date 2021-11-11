@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,9 @@ namespace HelloWorld.Model
         public Address HomeAddress { get; set; } // = new Address(); - vzdy se inicializuje
 
         public List<Cars> Cars{ get; set; } = new List<Cars>();
+
+        [NotMapped] //anotace
+        public int CarsCount { get { return Cars.Count; } } //nemá set > nedá se zapisovat, {return Cars.Count;} vrátí počet aut
 
         public DateTime DateofBirth { get; set; }
 

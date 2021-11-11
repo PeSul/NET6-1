@@ -7,9 +7,12 @@
         mc:Ignorable="d"
         Title="Hlavní Okno" Width="800" Background="#FF8DAECD" Loaded="wMain_Loaded">
     <Grid Margin="0,17,0,3" HorizontalAlignment="Left" Width="800">
-        <TextBlock x:Name="txbinfo" HorizontalAlignment="Left" Margin="70,94,0,0" Text="List osob:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36"/>
-        <Button x:Name="btnPersonDetail" Content="Detail osoby" HorizontalAlignment="Left" Margin="587,88,0,0" VerticalAlignment="Top" FontSize="24" Click="btnPersonDetail_Click" RenderTransformOrigin="-1.857,0.653" Padding="20,10,20,10" ClickMode="Release"/>
-        <DataGrid x:Name="grdPeople" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,150,0,0" RenderTransformOrigin="0.497,0.528"/>
+        <TextBlock x:Name="txbinfo" HorizontalAlignment="Left" Text="List osob:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Margin="10,100,0,0"/>
+        <Button x:Name="btnPersonDetail" IsEnabled="False" Content="Editovat osoby" HorizontalAlignment="Left" Margin="587,88,0,0" VerticalAlignment="Top" FontSize="24" Click="btnPersonDetail_Click" RenderTransformOrigin="-1.857,0.653" Padding="20,10,20,10" ClickMode="Release" Width="200" Height="50"/>
+        <DataGrid x:Name="grdPeople" AutoGeneratingColumn="grdPeople_AutoGeneratingColumn" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,150,0,0" RenderTransformOrigin="0.497,0.528" SelectionChanged="grdPeople_SelectionChanged"/>
+        <Button x:Name="btnAddPerson" Content="Přidat osobu" HorizontalAlignment="Left" Margin="371,88,0,0" VerticalAlignment="Top" FontSize="24" Width="200" Height="50" Click="btnAddPerson_Click"/>
+        <TextBox x:Name="txtInput" TextChanged="txtInput_TextChanged" HorizontalAlignment="Left" Margin="20,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" FontSize="24" Height="40"/>
+        <Button x:Name="btnSearch" Content="Zrušit" HorizontalAlignment="Left" Margin="333,20,0,0" VerticalAlignment="Top" Height="40" FontSize="24" Width="90" Click="btnSearchPerson_Click"/>
 
     </Grid>
 </Window>
