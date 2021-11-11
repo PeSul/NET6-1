@@ -11,7 +11,7 @@ namespace HelloWorld.Data
     public class PersonData
     {
         // field - staticka polozka
-        const string personDataFile = "People.txt";
+        const string personDataFile = "people.txt";
         //property
         //static string PersonDataFile { get; set; }
 
@@ -23,11 +23,11 @@ namespace HelloWorld.Data
             File.AppendAllText(personDataFile, line);
         }
 
-        public static List<Person> LoadPeople()
+        public static List<Person> LoadPeople(string file = "people.txt") //nepovinný parametr string file = "People.txt"
         {
             var people = new List<Person>();
 
-            var lines = File.ReadAllLines(personDataFile);
+            var lines = File.ReadAllLines(file);
 
             foreach (var line in lines)
             {
